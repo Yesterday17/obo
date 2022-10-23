@@ -1,0 +1,10 @@
+{
+  "id": "obo-exporter",
+  "name": "Obo Exporter",
+  "version": "1.0.0",
+  "minAppVersion": "0.12.15",
+  "description": "Export necessary files for publishing a static site.",
+  "author": "Yesterday17",
+  "authorUrl": "https://github.com/Yesterday17",
+  "isDesktopOnly": true
+}
