@@ -72,20 +72,22 @@ class MyPlugin extends Plugin {
           getAbsolutePath(),
           JSON.stringify(
             Object.fromEntries(
-              Object.entries(result).sort(([aKey, a], [bKey, b]) => {
-                const aCreatedAt = a?.frontmatter?.created;
-                const bCreatedAt = b?.frontmatter?.created;
+              Object.entries(result)
+                .filter(([_, value]) => value?.frontmatter?.publish !== false)
+                .sort(([aKey, a], [bKey, b]) => {
+                  const aCreatedAt = a?.frontmatter?.created;
+                  const bCreatedAt = b?.frontmatter?.created;
 
-                if (a === null && b === null) {
-                  return 0;
-                } else if (a === null) {
-                  return 1;
-                } else if (b === null) {
-                  return -1;
-                } else {
-                  return new Date(aCreatedAt) - new Date(bCreatedAt);
-                }
-              })
+                  if (a === null && b === null) {
+                    return 0;
+                  } else if (a === null) {
+                    return 1;
+                  } else if (b === null) {
+                    return -1;
+                  } else {
+                    return new Date(aCreatedAt) - new Date(bCreatedAt);
+                  }
+                })
             )
           )
         );
